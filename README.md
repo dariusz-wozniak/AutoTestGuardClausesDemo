@@ -1,4 +1,4 @@
-# AutoTestGuardClauses
+# AutoTestGuardClausesDemo
 Test guard clauses in .ctors automatically.
 
 E.g.:
