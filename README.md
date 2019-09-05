@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/m6djus7yaqr8cwdc?svg=true)](https://ci.appveyor.com/project/dariusz-wozniak/autotestguardclausesdemo)
+
 # AutoTestGuardClausesDemo
 Test guard clauses in .ctors automatically.
 
