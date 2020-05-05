@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using AutoFixture;
 using AutoFixture.AutoMoq;
 using AutoFixture.Idioms;
@@ -9,19 +11,17 @@ namespace AutoTestGuardClauses
 {
     public class Tests
     {
-        public static IEnumerable<Type> CtorsWithGuardClauses
+        private static IEnumerable<Type> TypesToTest()
         {
-            get
-            {
-                return new List<Type>
-                {
-                    typeof(SomeClass),
-                    // add more guys here...
-                };
-            }
+            var selectMany = Assembly.Load("AutoTestGuardClauses").GetTypes();
+            var types = selectMany.Where(t => t.IsClass && 
+                                              t.Namespace != null && 
+                                              t.Namespace.StartsWith("AutoTestGuardClauses"));
+
+            foreach (var type in types) yield return type;
         }
 
-        [TestCaseSource(nameof(CtorsWithGuardClauses))]
+        [TestCaseSource(nameof(TypesToTest))]
         public void AllConstructorsMustBeGuardClaused(Type type)
         {
             var fixture = new Fixture().Customize(new AutoMoqCustomization());
