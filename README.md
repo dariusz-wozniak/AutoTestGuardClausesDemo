@@ -11,9 +11,9 @@ public class Tests
     private static IEnumerable<Type> TypesToTest()
     {
         var selectMany = Assembly.Load("AutoTestGuardClauses").GetTypes();
-        var types = selectMany.Where(t => t.IsClass && 
-                                            t.Namespace != null && 
-                                            t.Namespace.StartsWith("AutoTestGuardClauses"));
+        var types = selectMany.Where(t => t.IsClass &&
+                                          t.Namespace != null &&
+                                          t.Namespace.StartsWith("AutoTestGuardClauses"));
 
         foreach (var type in types) yield return type;
     }
